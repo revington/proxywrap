@@ -31,13 +31,13 @@
     "url": "https://github.com/findhit/findhit-proxywrap"
   },
   "dependencies": {
-    "findhit-util": "^0.2.2"
+    "findhit-util": "^0.2.3"
   },
   "devDependencies": {
-    "bluebird": "^2.4.0",
-    "chai": "^1.9.1",
-    "mocha": "^1.21.3",
-    "sinon": "^1.10.3"
+    "bluebird": "^2.5.3",
+    "chai": "^1.10.0",
+    "mocha": "^2.1.0",
+    "sinon": "^1.12.2"
   },
   "keywords": [
     "proxy",
