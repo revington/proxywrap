@@ -6,7 +6,7 @@ CHANGELOG
 
 # 0.3.7
 - Fixed destructed problem when on non-strict #7
-- Updated needed libs
+- Updated dependent modules
 
 # 0.3.6
 - Fixed npm problem
