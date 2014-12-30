@@ -31,7 +31,7 @@ module.exports = {
 
 	createServer: function ( p, options ) {
 		var pc = protocols[ p ],
-			proxy = ProxyWrap.proxy( pc, Util.is.Object( options ) || {} ),
+			proxy = ProxyWrap.proxy( pc, options ),
 
 			server = proxy.createServer(),
 			port = Math.floor( ( Math.random() * 5000 ) + 15000 ), // To be sure that the port is not beeing used on test side

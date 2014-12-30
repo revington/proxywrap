@@ -39,8 +39,6 @@ describe( "PROXY Protocol v1", function () {
 		describe( "Should detect a malformed PROXY headers", function () {
 
 			it( "Header without IP's", function () {
-				var self = this;
-
 				return tUtil.fakeConnect( server, {
 					header: 'PROXY HACK ATTEMPT',
 				})
@@ -52,9 +50,16 @@ describe( "PROXY Protocol v1", function () {
 
 			});
 
-			it( "Restore emitted events after socket.destroy #5", function () {
-				var self = this;
+			it( "non-proxy connection when in non-strict mode should not be destroyed #7", function () {
+				return tUtil.fakeConnect( tUtil.createServer( 'net', { strict: false }), {
+					header: 'TELNET BABY',
+				})
+					.then( null, function ( err ) {
+						throw new Error("It shouldn't get rejected");
+					});
+			});
 
+			it( "Restore emitted events after socket.destroy #5", function () {
 				return tUtil.fakeConnect( server, {
 					header: 'PRO',
 					autoCloseSocket: false,
