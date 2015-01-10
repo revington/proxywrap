@@ -1,6 +1,6 @@
 {
   "name": "findhit-proxywrap",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "Wraps node's Server interfaces to be compatible with the PROXY protocol",
   "main": "index.js",
   "author": "Josh Dague",
@@ -22,7 +22,6 @@
   "engines": {
     "node": ">= 0.8"
   },
-  "engineStrict": true,
   "scripts": {
     "test": "node node_modules/mocha/bin/mocha --globals setImmediate,clearImmediate --check-leaks --colors -t 10000 --reporter spec $(find test/* -name '*.test.js')"
   },
