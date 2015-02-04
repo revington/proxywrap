@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/findhit/findhit-proxywrap"
+    "url": "https://github.com/findhit/proxywrap"
   },
   "dependencies": {
     "findhit-util": "^0.2.3"
@@ -43,6 +43,6 @@
     "elb"
   ],
   "bugs": {
-    "url": "https://github.com/findhit/findhit-proxywrap/issues"
+    "url": "https://github.com/findhit/proxywrap/issues"
   }
 }
