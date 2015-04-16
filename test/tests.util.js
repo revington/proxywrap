@@ -5,6 +5,8 @@ var ProxyWrap = require( '../index' ),
 	protocols = {
 		net: require( 'net' ),
 		http: require( 'http' ),
+		// https: require( 'https' ),
+		// spdy: require( 'spdy' ).server
 	}
 
 	sinon = require( 'sinon' ),
