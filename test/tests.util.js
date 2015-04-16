@@ -104,6 +104,12 @@ module.exports = {
 						expect( socket.proxyAddress ).to.be.equal( options.proxyAddress );
 						expect( socket.clientPort ).to.be.equal( options.clientPort );
 						expect( socket.proxyPort ).to.be.equal( options.proxyPort );
+
+						if ( server.constructor.options.overrideRemote ) {
+							expect( socket.remoteAddress ).to.be.equal( options.clientAddress );
+							expect( socket.remotePort ).to.be.equal( options.clientPort );
+						}
+
 					} catch ( err ) {
 						reject( err );
 					}
