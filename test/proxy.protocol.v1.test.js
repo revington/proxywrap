@@ -2,6 +2,7 @@ var Util = require( 'findhit-util' ),
 	tUtil = require( './tests.util' ),
 	Promise = require( 'bluebird' ),
 
+	net = require( 'net' ),
 	sinon = require( 'sinon' ),
 	chai = require( 'chai' ),
 	expect = chai.expect;
@@ -73,7 +74,7 @@ function v1tests ( proto, server ) {
 				.then(function () {
 					throw new Error("It shouldn't get fulfilled");
 				}, function ( err ) {
-					expect( err ).to.be.equal( "PROXY protocol error" );
+					expect( err.message ).to.be.equal( "PROXY protocol error" );
 				});
 
 		});
@@ -83,10 +84,7 @@ function v1tests ( proto, server ) {
 			it( "non-proxy connection when in non-strict mode should not be destroyed #7", function () {
 				return tUtil.fakeConnect( tUtil.createServer( proto, { strict: false }), {
 					header: 'TELNET BABY',
-				})
-					.then( null, function ( err ) {
-						throw new Error("It shouldn't get rejected");
-					});
+				});
 			});
 
 		}
@@ -100,8 +98,23 @@ function v1tests ( proto, server ) {
 				.then(function () {
 					throw new Error("It shouldn't get fulfilled");
 				}, function ( err ) {
-					expect( err ).to.be.equal( "PROXY protocol error" );
+					expect( err.message ).to.be.equal( "non-PROXY protocol connection" );
 				});
+
+		});
+
+		it( "should drop connection gracefully when non-proxy connection is gathered when `ignoreStrictExceptions` is active. #11", function ( cb ) {
+			var server = tUtil.createServer( proto, { strict: true, ignoreStrictExceptions: true });
+			var client = new net.Socket();
+
+			client.on( 'end', cb );
+
+			client.once( 'connect', function () {
+				// Send header and body
+				client.write( 'GET / HTTP/1.0\n\n' );
+			});
+
+			client.connect( server.port, server.host );
 
 		});
 
