@@ -2,6 +2,9 @@ CHANGELOG
 =========
 
 # Upcoming
+
+
+# 0.3.9
 - Added an option to ignore strict generated exceptions while destroying socket,
   called `ignoreStrictExceptions`. Defaults to `false`. Reason on [#11](https://github.com/findhit/proxywrap/issues/11)
 
