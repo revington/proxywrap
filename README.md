@@ -66,6 +66,8 @@ Options:
 
 - `strict` (default `true`): Incoming connections MUST use the PROXY protocol.  If the first five bytes received aren't `PROXY`, the connection will be dropped.  Disabling this option will allow connections that don't use the PROXY protocol (so long as the first bytes sent aren't `PROXY`).  Disabling this option poses a security risk; it should be enabled in production.
 
+- `ignoreStrictExceptions` (default `false`): `strict` shutdowns your process with an error attached, meaning that if it isn't being caught on socket's `error` event, node will terminate process with an `uncaughtException`. This option tells `strict` methods to destroy sockets without providing the exception, so `node` ignores it. See [#11](https://github.com/findhit/proxywrap/issues/11) for more info.
+
 - `overrideRemote` (default `true`): **findhit-proxywrap** overrides `socket.remoteAddress` and `socket.remotePort` for compability proposes. If you set this as `false`, your `socket.remoteAddress` and `socket.remotePort` will have the Address and Port of your **load-balancer** or whatever you are using behind your app. You can also access client's Address and Port by using `socket.clientAddress` and `socket.clientPort`.
 
 
