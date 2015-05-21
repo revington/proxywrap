@@ -74,7 +74,7 @@ function v1tests ( proto, server ) {
 				.then(function () {
 					throw new Error("It shouldn't get fulfilled");
 				}, function ( err ) {
-					expect( err.message ).to.be.equal( "PROXY protocol error" );
+					expect( err.message ).to.be.equal( "PROXY protocol malformed header" );
 				});
 
 		});
