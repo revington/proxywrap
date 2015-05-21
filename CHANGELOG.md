@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 # Upcoming
-
+- Added `.header` exposure on `error`
+- Fixed TCP port on pr [#11](https://github.com/findhit/proxywrap/pull/11)
 
 # 0.3.9
 - Added an option to ignore strict generated exceptions while destroying socket,
