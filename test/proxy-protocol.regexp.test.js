@@ -57,4 +57,42 @@ describe( "PROXY Protocol regexp tests", function () {
 
     });
 
+    describe( "Ports", function () {
+
+        function testPort ( port, ok ) {
+            it( 'port '+ port +' should ' + ( ok ? '' : 'NOT' ) + ' be ok', function () {
+                var res = test( 'PROXY TCP4 127.0.0.1 127.0.0.1 '+ port +' '+ port );
+                if ( ok )
+                    expect( res ).to.be.ok;
+                else {
+                    expect( res ).to.not.be.ok;
+                }
+            });
+        }
+
+        function testPorts( ports, ok ) {
+            ports.forEach(function ( port ) {
+                testPort( port, ok );
+            });
+        }
+
+
+        // Tests for PR #14
+        testPorts([
+            6,
+            65,
+            655,
+            6553,
+            65535,
+        ], true );
+        testPorts([
+            65536,
+            65545,
+            65635,
+            66535,
+            75535,
+        ], false );
+
+    });
+
 });
