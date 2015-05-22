@@ -2,6 +2,8 @@ CHANGELOG
 =========
 
 # Upcoming
+
+# 0.3.10
 - Added `.header` exposure on `error`
 - Fixed TCP port on pr [#11](https://github.com/findhit/proxywrap/pull/11)
 
