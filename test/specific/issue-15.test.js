@@ -1,11 +1,12 @@
 'use strict';
+
 /* related to issue https://github.com/findhit/proxywrap/issues/15 */
-var http = require('http'),
-    assert = require('assert'),
-    net = require('net'),
-    exec = require('child_process').exec,
-    child,
-    proxyWrap = require('..');
+var http = require('http')
+var assert = require('assert')
+var net = require('net')
+var exec = require('child_process').exec
+var child
+var proxyWrap = require('../..')
 
 function findCloseWaitConnections(port, callback) {
     var child = exec('netstat -tonp | grep 8000 | grep CLOSE_WAIT',
