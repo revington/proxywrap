@@ -59,7 +59,7 @@ describe('Sockets closed before any write #15', function () {
         });
         it('should be restored', function (done) {
             findCloseWaitConnections(port, function (err, stdout) {
-                assert.deepEqual(null, stdout);
+                assert(!stdout);
                 return done();
             });
         });
@@ -80,7 +80,7 @@ describe('Sockets closed before any write #15', function () {
         });
         it('should be restored', function (done) {
             findCloseWaitConnections(port, function (err, stdout) {
-                assert.deepEqual(null, stdout);
+                assert(!stdout);
                 return done();
             });
         });
